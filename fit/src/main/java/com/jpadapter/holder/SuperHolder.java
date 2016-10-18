@@ -1,16 +1,18 @@
 package com.jpadapter.holder;
 
-
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jpadapter.i.IHolderAccept;
+import com.jpadapter.i.IHolderHandler;
+
 /**
  * Created by john on 16-7-1.<br/>
  */
 
-public abstract class SuperHolder<T> implements IHolder<T> {
+public abstract class SuperHolder<T> implements IHolder<T>,IHolderHandler {
     protected int layout;
     protected int index;//存放索引位置
     protected T bean;
@@ -85,5 +87,13 @@ public abstract class SuperHolder<T> implements IHolder<T> {
                 OnClick.onClick(getView(viewId));
             }
         });
+    }
+
+    @Override
+    public void sendMessage(Object obj) {
+        if (mContext != null && mContext instanceof IHolderAccept) {
+            IHolderAccept accept = (IHolderAccept) mContext;
+            accept.acceptMessage(obj);
+        }
     }
 }

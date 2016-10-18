@@ -2,25 +2,27 @@ package com.sample.adafit;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 
 import com.jpadapter.adapter.ManyAdapter;
 import com.jpadapter.adapter.NormalAdapter;
+import com.jpadapter.i.IHolderAccept;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements IHolderAccept{
     private ListView mListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mListView= (ListView) findViewById(R.id.text_listview);
-        testItems();
-//        testItem();
+//        testItems();
+        testItem();
     }
 
     private void testItems(){
@@ -46,5 +48,10 @@ public class MainActivity extends Activity {
         }
         BaseAdapter adapter = new NormalAdapter<>(list, this);
         mListView.setAdapter(adapter);
+    }
+
+    @Override
+    public void acceptMessage(Object obj) {
+        Log.i("", "");
     }
 }

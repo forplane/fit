@@ -27,5 +27,11 @@ public class ItemH extends INormalHolder<ItemBean> {
     public void setData(ItemBean itemBean) {
         super.setData(itemBean);
         txt.setText(itemBean.getTxt());
+        setOnClickListener(R.id.txt, null, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMessage("adsfasdf");
+            }
+        });
     }
 }
