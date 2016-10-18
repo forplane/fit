@@ -1,7 +1,11 @@
 使用说明
+
 单个Item（以下称为Holder类）使用说明
+
 1：注解Bean类
+
 @NormalH(holderName = ItemH.class)
+
 public class ItemBean {}
 
 2：Holder类
@@ -43,7 +47,7 @@ public class ItemsRightH extends IManyHolder<ItemsBean>{
 BaseAdapter adapter = new ManyAdapter<>(list, this);
 mListView.setAdapter(adapter);
 
-以上就是简单使用说明
+以上就是简单使用说明</br>
 具体没有介绍的，可以直接导出项目看
 ------------------------------不知道为什么，就是想弄上一条分界线---------------------------
 
