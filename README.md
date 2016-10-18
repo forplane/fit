@@ -23,7 +23,7 @@ public class ItemH extends INormalHolder<ItemBean>{
     }
 }
 
-3：直接使用
+3：直接使用</br>
 BaseAdapter adapter = new NormalAdapter<>(list, this);
 mListView.setAdapter(adapter);
 
