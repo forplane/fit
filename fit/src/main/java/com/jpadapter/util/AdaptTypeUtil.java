@@ -15,7 +15,15 @@ public class AdaptTypeUtil {
     public static int getAnnotaionType(Object info) {
         int methodName = -1;
         try {
-            Field[] declaredFields = info.getClass().getDeclaredFields();
+            Class cla = info.getClass();
+            Class temp=cla.getSuperclass();
+            boolean is=temp.getCanonicalName().equals(Object.class.getCanonicalName());
+            while (!is) {
+                cla=temp;
+                temp = cla.getClass().getSuperclass();
+                is=temp.getCanonicalName().equals(Object.class.getCanonicalName());
+            }
+            Field[] declaredFields = cla.getDeclaredFields();
             for (int i = 0; i < declaredFields.length; i++) {
                 Field field = declaredFields[i];
                 //判断这个Field上是否有这个注解
@@ -25,6 +33,7 @@ public class AdaptTypeUtil {
                     if (fieldAnnotations != null) {
                         field.setAccessible(true);
                         methodName= (int) field.get(info);
+                        break;
                     }
                 }
             }
