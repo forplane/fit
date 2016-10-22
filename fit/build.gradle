@@ -1,5 +1,10 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'maven'
+apply plugin: 'signing'
+signing {
+    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -16,6 +21,30 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+
+
+    uploadArchives {
+        configuration = configurations.archives
+        repositories.mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+            repository(url: 'http://192.168.0.240:8081/nexus/content/repositories/yidont/') {//仓库地址
+                authentication(userName: "admin",//用户名
+                        password: "admin123")//密码
+            }
+
+            pom.project {
+                name 'juude-library'
+                packaging 'aar'
+                description 'none'
+                url 'http://192.168.0.240:8081/nexus/content/repositories/yidont/'//仓库地址
+                groupId "com.yidont"
+                artifactId 'fit' //LibA
+                version android.defaultConfig.versionName
+            }
         }
     }
 }
