@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.jpadapter.i.IHolderAccept;
 import com.jpadapter.i.IHolderHandler;
 
+import java.util.HashMap;
+
 /**
  * Created by john on 16-7-1.<br/>
  */
@@ -95,5 +97,13 @@ public abstract class SuperHolder<T> implements IHolder<T>,IHolderHandler {
             IHolderAccept accept = (IHolderAccept) mContext;
             accept.acceptMessage(obj);
         }
+    }
+
+    @Override
+    public void sendMessage(String key, Object obj) {
+        HashMap<String, Object> hash = new HashMap<>();
+        hash.put("key", key);
+        hash.put("obj", obj);
+        sendMessage(hash);
     }
 }

@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AdaFit.iml" filepath="$PROJECT_DIR$/AdaFit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/fit/fit.iml" filepath="$PROJECT_DIR$/fit/fit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fit/fit.iml" filepath="$PROJECT_DIR$/fit/fit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fit-master.iml" filepath="$PROJECT_DIR$/fit-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/fit-master.iml" filepath="$PROJECT_DIR$/fit-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/fit-master.iml" filepath="$PROJECT_DIR$/.idea/fit-master.iml" />
     </modules>
