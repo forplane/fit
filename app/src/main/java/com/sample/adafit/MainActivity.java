@@ -22,27 +22,9 @@ public class MainActivity extends Activity implements IHolderAccept {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mListView = (ListView) findViewById(R.id.text_listview);
-        testItems();
 //        testItem();
     }
 
-    private void testItems() {
-        List<MSuperBean> list = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            int type = i % 2 == 0 ? 0 : 1;
-            if (type == 0) {
-                MOneBean bean = new MOneBean();
-                bean.setOne("i="+i);
-                list.add(bean);
-            } else {
-                MTwoBean bean = new MTwoBean();
-                bean.setTwo("i="+i);
-                list.add(bean);
-            }
-        }
-        BaseAdapter adapter = new ManyAdapter<>(list, this);
-        mListView.setAdapter(adapter);
-    }
 
 
     private void testItem() {
