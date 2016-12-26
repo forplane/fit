@@ -6,10 +6,14 @@ package com.jpadapter.i;
  */
 
 public interface IHolderHandler {
-    /**Holder需要跟Context是，直接调用此方法，传入需要参数即可*/
+    /**
+     * Holder需要跟Context是，直接调用此方法，传入需要参数即可
+     */
     void sendMessage(Object obj);
 
 
-    /**Holder需要跟Fragment是，直接调用此方法，传入需要参数即可*/
-    void sendMessage(String key,Object obj);
+    /**
+     * Holder需要跟Fragment是，直接调用此方法，传入需要参数即可,<br/>注意，此方法暂时只对亿动公司项目有效
+     */
+    void sendMessage(String key, Object obj);
 }

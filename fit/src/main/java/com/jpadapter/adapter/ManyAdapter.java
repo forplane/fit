@@ -31,10 +31,6 @@ public class ManyAdapter<T> extends SuperAdapter<T> {
         Class[] classes = AdaptTypeUtil.getAnnotaionHolders(o);
         Class aClass =classes[type];
         IManyHolder manyHolder = IManyHolder.getIManyHolder(convertView,mContext,aClass);
-        if (selectAdapterListener != null) {//这里感觉怪怪的，打算分离出来
-            manyHolder.setConvertView(selectAdapterListener.initSelectView(manyHolder.getConvertView(),position));
-            manyHolder.getConvertView().setTag(manyHolder);
-        }
         manyHolder.setIndex(position);
         manyHolder.setData(o);
         return manyHolder.getConvertView();

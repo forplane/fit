@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by john on 16-7-11.<br/>
+ * 单重布局适配器
  */
 
 public class NormalAdapter<T> extends SuperAdapter<T> {
@@ -30,11 +31,6 @@ public class NormalAdapter<T> extends SuperAdapter<T> {
         if (holderCls == null)
             holderCls = AdaptTypeUtil.getAnnotaionHolder(o);
         INormalHolder normalHolder = INormalHolder.getINorMalHolder(convertView, holderCls, mContext);
-
-        if (selectAdapterListener != null) {
-            normalHolder.setConvertView(selectAdapterListener.initSelectView(normalHolder.getConvertView(),position));
-            normalHolder.getConvertView().setTag(normalHolder);
-        }
         /**复用类中需要用到的最基bean对象*/
         normalHolder.setData(o);
         normalHolder.setIndex(position);

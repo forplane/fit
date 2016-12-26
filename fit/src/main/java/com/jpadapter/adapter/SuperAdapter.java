@@ -47,11 +47,4 @@ public abstract class SuperAdapter<T> extends BaseAdapter {
         return position;
     }
 
-
-
-    protected SelectAdapterListener selectAdapterListener;
-
-    public void setSelectAdapterListener(SelectAdapterListener selectAdapterListener) {
-        this.selectAdapterListener = selectAdapterListener;
-    }
 }
