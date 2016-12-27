@@ -4,7 +4,8 @@ package com.sample.adafit;
 import com.jpadapter.util.NormalH;
 
 /**
- * Created by jon on 2016/9/28.<br/>
+ * Created by jon on 2016/9/28.
+ *
  */
 @NormalH(holderName = ItemH.class)
 public class ItemBean {

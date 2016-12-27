@@ -1,7 +1,7 @@
 package com.jpadapter.i;
 
 /**
- * Created by jon on 2016/10/18.<br/>
+ * Created by jon on 2016/10/18.
  * Context接受IHolderHandler通知接口
  */
 

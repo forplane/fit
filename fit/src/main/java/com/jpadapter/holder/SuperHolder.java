@@ -11,7 +11,7 @@ import com.jpadapter.i.IHolderHandler;
 import java.util.HashMap;
 
 /**
- * Created by john on 16-7-1.<br/>
+ * Created by john on 16-7-1.
  */
 
 public abstract class SuperHolder<T> implements IHolder<T>,IHolderHandler {

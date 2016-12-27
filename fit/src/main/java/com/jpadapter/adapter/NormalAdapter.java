@@ -13,7 +13,7 @@ import java.util.List;
 
 
 /**
- * Created by john on 16-7-11.<br/>
+ * Created by john on 16-7-11.
  * 单重布局适配器
  */
 

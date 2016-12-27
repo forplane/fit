@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 
 /**
- * Created by planes on 2016/8/31.<br/>
+ * Created by planes on 2016/8/31.
  * Holder中view的操作接口
  */
 public interface IViewOpe {

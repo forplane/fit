@@ -3,7 +3,7 @@ package com.jpadapter.util;
 import java.lang.reflect.Field;
 
 /**
- * Created by planes on 2016/8/25.<br/>
+ * Created by planes on 2016/8/25.
  * 注解操作类
  */
 

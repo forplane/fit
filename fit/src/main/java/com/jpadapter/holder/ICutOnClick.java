@@ -1,7 +1,7 @@
 package com.jpadapter.holder;
 
 /**
- * Created by planes on 2016/8/31.<br/>
+ * Created by planes on 2016/8/31.
  * 点击事件截取接口
  */
 

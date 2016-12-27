@@ -7,7 +7,7 @@ import android.view.View;
 import java.lang.reflect.Constructor;
 
 /**
- * Created by planes on 2016/8/25.<br/>
+ * Created by planes on 2016/8/25.
  */
 public class IManyHolder<T> extends SuperHolder<T> {
 

@@ -1,7 +1,7 @@
 package com.jpadapter.i;
 
 /**
- * Created by jon on 2016/10/18.<br/>
+ * Created by jon on 2016/10/18.
  * Holder通知Context接口
  */
 
@@ -13,7 +13,7 @@ public interface IHolderHandler {
 
 
     /**
-     * Holder需要跟Fragment是，直接调用此方法，传入需要参数即可,<br/>注意，此方法暂时只对亿动公司项目有效
+     * Holder需要跟Fragment是，直接调用此方法，传入需要参数即可,注意，此方法暂时只对亿动公司项目有效
      */
     void sendMessage(String key, Object obj);
 }

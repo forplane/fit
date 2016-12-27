@@ -5,7 +5,7 @@ import com.jpadapter.util.ManyH;
 import com.jpadapter.util.TypeH;
 
 /**
- * Created by jon on 2016/9/28.<br/>
+ * Created by jon on 2016/9/28.
  */
 @ManyH(holders = {ItemsLeftH.class,ItemsRightH.class})
 public class ItemsBean {

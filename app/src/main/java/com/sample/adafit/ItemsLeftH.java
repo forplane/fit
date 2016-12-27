@@ -8,7 +8,7 @@ import com.jpadapter.holder.IManyHolder;
 
 
 /**
- * Created by jon on 2016/9/28.<br/>
+ * Created by jon on 2016/9/28.
  */
 
 public class ItemsLeftH extends IManyHolder<ItemsBean> {

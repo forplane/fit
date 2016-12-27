@@ -1,10 +1,21 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'signing'
-signing {
-    required { hasProperty("release") && gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
-}
+//-------------------------上传到jcenter-----------------------
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+//-------------------------上传到jcenter-----------------------
+
+version = "1.4"
+
+//-------------------------内网上传需要的-------------------------
+//apply plugin: 'maven'
+//apply plugin: 'signing'
+//signing {
+//    required { hasProperty("release") && gradle.taskGraph.hasTask("uploadArchives") }
+//    sign configurations.archives
+//}
+//-------------------------内网上传需要的-------------------------
+
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -13,7 +24,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1612261610
-        versionName "1.4"
+        versionName version
 
 
     }
@@ -23,40 +34,121 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+//--------------------------上传到内网需要的-----------------------------------
+//    uploadArchives {
+//        configuration = configurations.archives
+//        repositories.mavenDeployer {
+//            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+//            repository(url: 'http://192.168.0.240:8081/nexus/content/repositories/yidont/') {//仓库地址
+//                authentication(userName: "admin",//用户名
+//                        password: "admin123")//密码
+//            }
+//
+//            pom.project {
+//                name 'juude-library'
+//                packaging 'aar'
+//                description 'none'
+//                url 'http://192.168.0.240:8081/nexus/content/repositories/yidont/'//仓库地址
+//                groupId "com.yidont"
+//                artifactId 'fit' //LibA
+//                version android.defaultConfig.versionName
+//            }
+//        }
+//    }
+//    task sourcesJar(type: Jar) {
+//        classifier = 'sources'
+//        from 'src/main/java'
+//    }
 
+//    artifacts {
+//        archives sourcesJar
+//    }
+//--------------------------上传到内网需要的-----------------------------------
 
-
-
-    uploadArchives {
-        configuration = configurations.archives
-        repositories.mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-            repository(url: 'http://192.168.0.240:8081/nexus/content/repositories/yidont/') {//仓库地址
-                authentication(userName: "admin",//用户名
-                        password: "admin123")//密码
-            }
-
-            pom.project {
-                name 'juude-library'
-                packaging 'aar'
-                description 'none'
-                url 'http://192.168.0.240:8081/nexus/content/repositories/yidont/'//仓库地址
-                groupId "com.yidont"
-                artifactId 'fit' //LibA
-                version android.defaultConfig.versionName
-            }
-        }
-    }
-    task sourcesJar(type: Jar) {
-        classifier = 'sources'
-        from 'src/main/java'
-    }
-
-    artifacts {
-        archives sourcesJar
-    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
+
+
+//-------------------------上传到jcenter-----------------------
+
+def siteUrl = 'https://github.com/Reproxy/fit-master'      // 项目的主页   这个是说明，可随便填
+def gitUrl = 'https://github.com/Reproxy/fit-master'      // Git仓库的url  这个是说明，可随便填
+group = "com.yidont"    // 这里是groupId ,必须填写  一般填你唯一的包名
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'adapter'     //项目描述
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The YiDont Software License, Version 1.4'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'huangjh'        //填写开发者的一些基本信息
+                        name 'huangjh'    //填写开发者的一些基本信息
+                        email 'huiji454537122@gmail.com'   //填写开发者的一些基本信息
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        links "http://docs.oracle.com/javase/7/docs/api"
+    }
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.file('local.properties').newDataInputStream())
+bintray {
+//    userOrg=properties.getProperty("bintray.user")
+    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
+    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "fit"    //发布到JCenter上的项目名字，必须填写
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+
+//-------------------------上传到jcenter-----------------------

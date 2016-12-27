@@ -11,7 +11,7 @@ import com.jpadapter.util.AdaptTypeUtil;
 import java.util.List;
 
 /**
- * Created by planes on 2016/8/25.<br/>
+ * Created by planes on 2016/8/25.
  * 多重item布局适配器
  */
 
