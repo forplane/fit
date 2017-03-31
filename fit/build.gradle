@@ -4,7 +4,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 //-------------------------上传到jcenter-----------------------
 
-version = "1.4"
+version = "1.5.1"
 
 //-------------------------内网上传需要的-------------------------
 //apply plugin: 'maven'
@@ -23,7 +23,7 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 1612261610
+        versionCode 1703311500
         versionName version
 
 
@@ -74,8 +74,8 @@ dependencies {
 
 //-------------------------上传到jcenter-----------------------
 
-def siteUrl = 'https://github.com/Reproxy/fit-master'      // 项目的主页   这个是说明，可随便填
-def gitUrl = 'https://github.com/Reproxy/fit-master'      // Git仓库的url  这个是说明，可随便填
+def siteUrl = 'https://github.com/forplane/fit.git'      // 项目的主页   这个是说明，可随便填
+def gitUrl = 'https://github.com/forplane/fit.git'      // Git仓库的url  这个是说明，可随便填
 group = "com.yidont"    // 这里是groupId ,必须填写  一般填你唯一的包名
 
 install {
