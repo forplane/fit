@@ -79,10 +79,8 @@ BaseAdapter adapter = new ManyAdapter<>(list, this);
 
 mListView.setAdapter(adapter);
 
-以上就是简单使用说明
-
-具体没有介绍的，可以直接导出项目看
-
-=======
-# fit
+直接导入as项目
+```
+compile 'com.yidont:fit:1.5.1'
+```
 >>>>>>> a3d82f05d15b92405f0bb85366f61441189f7c2e
